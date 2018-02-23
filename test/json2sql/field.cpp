@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include "field.hpp"
-#include "config.hpp"
-#include "document.h"
+
 namespace {
     using rapidjson::Value;
     class FieldTest : public ::testing::Test {
