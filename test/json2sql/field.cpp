@@ -22,35 +22,40 @@ namespace {
     }
 
     TEST_F(FieldTest, UpdateInteger) {
-        Value intVal(11);
+        Value intVal;
+        intVal.SetInt(11);
         field->update(&intVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::NUMBER);
         EXPECT_EQ(field->get_length(), sizeof(uint32_t));
     }
 
     TEST_F(FieldTest, UpdateInteger64) {
-        Value intVal(10000000000);
+        Value intVal;
+        intVal.SetInt64(10000000000);
         field->update(&intVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::NUMBER);
         EXPECT_EQ(field->get_length(), sizeof(uint64_t));
     }
 
     TEST_F(FieldTest, UpdateDouble) {
-        Value doubleVal(11.12);
+        Value doubleVal;
+        doubleVal.SetDouble(11.12);
         field->update(&doubleVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::DOUBLE);
         EXPECT_EQ(field->get_length(), sizeof(double));
     }
 
     TEST_F(FieldTest, UpdateTrue) {
-        Value trueVal(true);
+        Value trueVal;
+        trueVal.SetBool(true);
         field->update(&trueVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::BOOLEAN);
         EXPECT_EQ(field->get_length(), sizeof(bool));
     }
 
     TEST_F(FieldTest, UpdateFalse) {
-        Value falseVal(false);
+        Value falseVal;
+        falseVal.SetBool(false);
         field->update(&falseVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::BOOLEAN);
         EXPECT_EQ(field->get_length(), sizeof(bool));
