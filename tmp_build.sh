@@ -3,5 +3,4 @@ mkdir build
 cd build
 cmake ..
 make
-#make test
-test/json2sql/test_json2sql
+make test
