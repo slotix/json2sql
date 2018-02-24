@@ -1,14 +1,15 @@
 project(json2sql)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-#include_directories(${PROJECT_SOURCE_DIR}/third-party/rapidjson)
+include_directories( ${json2sql_SOURCE_DIR}/include)
+
 
 set (CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON )
 add_library(json2sql SHARED
-        include/field.hpp
-        src/field.cpp
         include/config.hpp
-        )
+        include/field.hpp
+        include/record.hpp
+        src/field.cpp
+        src/record.cpp)
 target_include_directories(json2sql PUBLIC
         ${PROJECT_SOURCE_DIR}/third-party/rapidjson
 )

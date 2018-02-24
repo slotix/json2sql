@@ -9,8 +9,8 @@
 #include <cstdint>
 
 namespace COLUMN_TITLES {
-    const char * const REFERENCE_FIELD = "DBC_REF_ID";
-    const char * const PRIMARY_KEY_FIELD = "DBC_ID";
+    const char * const REFERENCE_FIELD = "DBC_REF_ID";  // title for REFERENCE field
+    const char * const PRIMARY_KEY_FIELD = "DBC_ID";  // title for PRIMARY_KEY field
     const char * const ENUM_FIELD = "DBC_ENUM";
 
 }
@@ -40,6 +40,7 @@ enum FIELD_TYPE: uint8_t {
 };
 
 enum ERROR_CODES: uint8_t  {
-    FIELD__VALUE_TYPE_UNDEFINED = 0x01
+    FIELD__VALUE_TYPE_UNDEFINED = 0x01,
+    RECORD__ID_FIELD_UNDEFINED = 0x02
 };
 #endif //JSON2SQL_CONVERTER_CONFIG_HPP

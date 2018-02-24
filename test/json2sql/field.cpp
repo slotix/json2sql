@@ -3,6 +3,8 @@
 
 namespace {
     using rapidjson::Value;
+    using namespace Structures;
+
     class FieldTest : public ::testing::Test {
     protected:
 
@@ -82,7 +84,7 @@ namespace {
         unVal.SetObject();
         try {
             field->update(&unVal);
-        } catch (ERROR_CODES err) {
+        } catch (ERROR_CODES & err) {
             EXPECT_EQ(err, ERROR_CODES::FIELD__VALUE_TYPE_UNDEFINED);
         } catch(...) {
             FAIL();
@@ -90,7 +92,7 @@ namespace {
         unVal.SetArray();
         try {
             field->update(&unVal);
-        } catch (ERROR_CODES err) {
+        } catch (ERROR_CODES & err) {
             EXPECT_EQ(err, ERROR_CODES::FIELD__VALUE_TYPE_UNDEFINED);
         } catch(...) {
             FAIL();

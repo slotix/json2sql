@@ -1,9 +1,9 @@
 find_package(Threads REQUIRED)
-
+project(gtest)
 include(ExternalProject)
 ExternalProject_Add(
         gtest
-        #GIT_REPOSITORY https://github.com/google/googletest
+#        GIT_REPOSITORY https://github.com/google/googletest
         URL https://github.com/google/googletest/archive/master.zip
         PREFIX ${CMAKE_CURRENT_BINARY_DIR}/gtest
         INSTALL_COMMAND ""
