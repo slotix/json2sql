@@ -30,6 +30,14 @@ namespace {
         uint16_t enum_table_depth = 4;
     };
 
+    TEST_F(TableTest, RecordSetAllocated) {
+        HashTable h_table(hash_table_guid, hash_table_title_ptr, hash_table_depth, nullptr);
+        EnumTable e_table(enum_table_guid, enum_table_title_ptr, enum_table_depth, nullptr);
+        EXPECT_TRUE(h_table.get_record_set() != nullptr);
+        EXPECT_TRUE(e_table.get_record_set() != nullptr);
+    }
+
+
     TEST_F(TableTest, HashTableCanAcceptEnumTableAsParent) {
         EnumTable e_table(enum_table_guid, enum_table_title_ptr, enum_table_depth, nullptr);
         HashTable h_table(hash_table_guid, hash_table_title_ptr, hash_table_depth, &e_table);

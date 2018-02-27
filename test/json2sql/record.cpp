@@ -29,7 +29,7 @@ namespace {
             delete record;
             FAIL();
         } catch (const ERROR_CODES & err) {
-            EXPECT_EQ(err, RECORD__ID_FIELD_UNDEFINED);
+            EXPECT_EQ(err, Record_IdFieldUndefined);
         } catch (...) {
             FAIL();
         }

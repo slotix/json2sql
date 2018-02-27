@@ -26,7 +26,7 @@ namespace Structures {
 
         std::map<Field *, rapidjson::Value *> *get_values() { return &value_; }
 
-        const rapidjson::Value *get_value(Field *field) { return value_[field]; }
+        rapidjson::Value *get_value(Field *field) { return value_[field]; }
     };
 
 }

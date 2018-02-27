@@ -33,7 +33,7 @@ namespace {
 
     TEST_F(FieldTest, UpdateInteger64) {
         Value intVal;
-        intVal.SetInt64(10000000000);
+        intVal.SetUint64(10000000000);
         field->update(&intVal);
         EXPECT_EQ(field->get_type(), FIELD_TYPE::NUMBER);
         EXPECT_EQ(field->get_length(), sizeof(uint64_t));
@@ -85,7 +85,7 @@ namespace {
         try {
             field->update(&unVal);
         } catch (ERROR_CODES & err) {
-            EXPECT_EQ(err, ERROR_CODES::FIELD__VALUE_TYPE_UNDEFINED);
+            EXPECT_EQ(err, ERROR_CODES::Field_ValueTypeUndefined);
         } catch(...) {
             FAIL();
         }
@@ -93,7 +93,7 @@ namespace {
         try {
             field->update(&unVal);
         } catch (ERROR_CODES & err) {
-            EXPECT_EQ(err, ERROR_CODES::FIELD__VALUE_TYPE_UNDEFINED);
+            EXPECT_EQ(err, ERROR_CODES::Field_ValueTypeUndefined);
         } catch(...) {
             FAIL();
         }

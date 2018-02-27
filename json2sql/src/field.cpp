@@ -38,7 +38,7 @@ namespace Structures {
                 }
                 break;
             default:
-                throw (FIELD__VALUE_TYPE_UNDEFINED);
+                throw Field_ValueTypeUndefined;
         }
         if (length_ < new_length) length_ = new_length;
     }
