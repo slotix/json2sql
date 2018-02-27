@@ -1,7 +1,6 @@
 //
 // Created by sn0w1eo on 26.02.18.
 //
-//
 
 #include <gtest/gtest.h>
 #include "enum_table.hpp"
@@ -9,7 +8,8 @@
 
 namespace {
     using namespace rapidjson;
-    using namespace Structures;
+    using namespace DBConvert::Structures;
+
     class RecordSetTest : public ::testing::Test {
     protected:
         void SetUp() {
@@ -19,7 +19,10 @@ namespace {
             enum_table = new EnumTable(1, e_title, 0, nullptr);
         }
         void TearDown() {
-
+            delete h_title;
+            delete e_title;
+            delete hash_table;
+            delete enum_table;
         }
         Value * h_title;
         Value * e_title;

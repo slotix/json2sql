@@ -6,7 +6,8 @@
 #include "enum_table.hpp"
 
 namespace {
-    using namespace Structures;
+    using namespace DBConvert::Structures;
+
     class EnumTableTest : public ::testing::Test {
     protected:
         void SetUp() {
@@ -35,5 +36,4 @@ namespace {
     TEST_F(EnumTableTest, GetGUID) {
         EXPECT_EQ(table->get_guid(), 1);
     }
-
 }

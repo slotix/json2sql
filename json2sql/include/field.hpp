@@ -9,24 +9,23 @@
 #include "config.hpp"
 #include "document.h"
 
-namespace Structures {
+namespace DBConvert {
+    namespace Structures {
 
-    class Field {
-    private:
-        const char * title_;
-        uint64_t length_;
-        uint8_t type_;
-    public:
-        explicit Field(const char * title) : title_(title), length_(0), type_(FIELD_TYPE::UNDEFINED) {};
-    
-        ~Field();
-
-        const char * get_title() const { return title_; };
-        uint64_t get_length() const { return length_; };
-        uint8_t get_type() const;
-        void update(rapidjson::Value * value);
-    };
-
+        class Field {
+        private:
+            const char * title_;
+            uint64_t     length_;
+            uint8_t      type_;
+        public:
+            explicit Field(const char *title) : title_(title), length_(0), type_(FIELD_TYPE::UNDEFINED) {};
+            ~Field();
+            uint8_t      get_type()     const;
+            const char * get_title()    const { return title_; };
+            uint64_t     get_length()   const { return length_; };
+            void         update(rapidjson::Value *value);
+        };
+    }
 }
 
-#endif
+#endif //JSON2SQL_FIELD_HPP

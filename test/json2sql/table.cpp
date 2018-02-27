@@ -9,21 +9,23 @@
 #include "enum_table.hpp"
 
 namespace {
-    using namespace Structures;
+    using namespace rapidjson;
+    using namespace DBConvert::Structures;
+
     class TableTest : public ::testing::Test {
     protected:
         void SetUp() {
-            hash_table_title_ptr = new rapidjson::Value;
+            hash_table_title_ptr = new Value;
             hash_table_title_ptr->SetString("Hash Table Title");
-            enum_table_title_ptr = new rapidjson::Value;
+            enum_table_title_ptr = new Value;
             enum_table_title_ptr->SetString("Enum Table Title");
         }
         void TearDown() {
             delete hash_table_title_ptr;
             delete enum_table_title_ptr;
         }
-        rapidjson::Value * hash_table_title_ptr;
-        rapidjson::Value * enum_table_title_ptr;
+        Value * hash_table_title_ptr;
+        Value * enum_table_title_ptr;
         uint32_t hash_table_guid = 1;
         uint32_t enum_table_guid = 2;
         uint16_t hash_table_depth = 3;

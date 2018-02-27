@@ -9,7 +9,8 @@
 
 namespace {
     using rapidjson::Value;
-    using namespace Structures;
+    using namespace DBConvert::Structures;
+
     class EnumRecordSetTest : public ::testing::Test {
     protected:
         void SetUp() {

@@ -9,21 +9,24 @@
 #include "hash_record_set.hpp"
 #include <cstdint>
 
-namespace Structures {
-    class HashTable : public Table {
-    private:
-        HashRecordSet * hash_record_set_;
-    public:
-        explicit HashTable(const uint32_t & guid, const rapidjson::Value * title, const uint16_t & depth, const Table * parent) :
-                Table(guid, title, depth, parent), hash_record_set_(new HashRecordSet(this)) {};
-        ~HashTable() final;
-        RecordSet    *get_record_set() const override { return hash_record_set_; }
-        const char   *get_title()      const override { return title_->GetString(); }
-        uint32_t      get_guid()       const override { return guid_; }
-        uint16_t      get_depth()      const override { return depth_; }
-        const Table  *get_parent()     const override { return parent_; }
-    };
+namespace DBConvert {
+    namespace Structures {
 
-    inline HashTable::~HashTable() { delete hash_record_set_; }
+        class HashTable : public Table {
+        private:
+            HashRecordSet * hash_record_set_;
+        public:
+            explicit HashTable(const uint32_t &guid, const rapidjson::Value *title, const uint16_t &depth, const Table *parent)
+                    : Table(guid, title, depth, parent), hash_record_set_(new HashRecordSet(this)) {};
+            ~HashTable() final;
+            RecordSet   * get_record_set() const override { return hash_record_set_; }
+            const char  * get_title()      const override { return title_->GetString(); }
+            uint32_t      get_guid()       const override { return guid_; }
+            uint16_t      get_depth()      const override { return depth_; }
+            const Table * get_parent()     const override { return parent_; }
+        };
+        inline HashTable::~HashTable() { delete hash_record_set_; }
+    }
 }
+
 #endif //JSON2SQL_HASH_TABLE_HPP

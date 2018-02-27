@@ -6,13 +6,15 @@
 #include "hash_table.hpp"
 
 namespace {
-    using namespace Structures;
+    using rapidjson::Value;
+    using namespace DBConvert::Structures;
+
     class HashTableTest : public ::testing::Test {
     protected:
         void SetUp() {
             uint32_t guid = 1;
             uint16_t depth = 0;
-            title = new rapidjson::Value;
+            title = new Value;
             title->SetString("Table Title");
             table = new HashTable{1, title, depth, nullptr};
         }
@@ -21,7 +23,7 @@ namespace {
             delete table;
         }
         Table * table;
-        rapidjson::Value * title;
+        Value * title;
     };
 
     TEST_F(HashTableTest, GetTitleReturnsConstCharPtrToValueGetStringPtr) {
@@ -35,5 +37,4 @@ namespace {
     TEST_F(HashTableTest, GetGUID) {
         EXPECT_EQ(table->get_guid(), 1);
     }
-
 }

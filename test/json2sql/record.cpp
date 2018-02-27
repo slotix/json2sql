@@ -1,12 +1,13 @@
 //
 // Created by sn0w1eo on 25.02.18.
 //
-#include "record.hpp"
+
 #include <gtest/gtest.h>
-#include "config.hpp"
+#include "record.hpp"
 
 namespace {
-    using namespace Structures;
+    using rapidjson::Value;
+    using namespace DBConvert::Structures;
 
     class RecordConstructorTest : public ::testing::Test {
     protected:
@@ -19,8 +20,8 @@ namespace {
             delete id_reference_field;
         }
         Record * record;
-        Field * id_field;
-        Field * id_reference_field;
+        Field  * id_field;
+        Field  * id_reference_field;
     };
 
     TEST_F(RecordConstructorTest, IdFieldPtrCanNotBeNull) {
@@ -57,7 +58,6 @@ namespace {
     }
 
 
-
     class RecordTest : public ::testing::Test {
     protected:
         void SetUp() {
@@ -78,13 +78,12 @@ namespace {
     TEST_F(RecordTest, AddFieldPtrAndAssosiatedValuePtrIntoMap) {
         Field * field;
         field = new Field("Number");
-        rapidjson::Value * value;
-        value = new rapidjson::Value;
+        Value * value;
+        value = new Value;
         value->SetInt(42);
         EXPECT_NO_THROW(record->add(field, value));
         EXPECT_EQ(record->get_value(field), value);
         delete field;
         delete value;
     }
-
 }

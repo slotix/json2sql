@@ -4,19 +4,21 @@
 
 #include <gtest/gtest.h>
 #include <random>
-#include <hash_table.hpp>
+#include "hash_table.hpp"
 #include "hash_record_set.hpp"
 
 #define TITLE_FOR_VALUE "Field Title"
 
 namespace {
-    using namespace rapidjson;
-    using namespace Structures;
+    using rapidjson::Value;
+    using namespace DBConvert::Structures;
+
     class HashRecordSetTest : public ::testing::Test {
     protected:
         void SetUp() {
             any_title_ptr = new Value;  // for title of field
             any_title_ptr->SetString( TITLE_FOR_VALUE );
+
             any_value_ptr = new Value;
             any_value_ptr->SetString("Any Value");
             any_value_ptr2 = new Value;
@@ -35,6 +37,7 @@ namespace {
         void TearDown() {
             parent_rs = nullptr;
             child_rs = nullptr;
+
             delete parent_table;
             delete child_table;
             delete parent_title;
@@ -42,6 +45,8 @@ namespace {
 
             delete any_value_ptr;
             delete any_value_ptr2;
+
+            delete any_title_ptr;
         }
         Value * parent_title;
         Value * child_title;
@@ -109,7 +114,6 @@ namespace {
         uint64_t child_ref_id_value = child_rs->get_records()->back()->get_value(ref_id_field)->GetUint64();
         EXPECT_EQ(child_ref_id_value, parent_records_count);
     }
-
 
     TEST_F(HashRecordSetTest, AddNullTitlePtrException) {
         parent_rs->new_record_begin();

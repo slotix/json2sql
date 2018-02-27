@@ -1,13 +1,16 @@
+//
+// Created by sn0w1eo on 23.02.18.
+//
+
 #include <gtest/gtest.h>
 #include "field.hpp"
 
 namespace {
     using rapidjson::Value;
-    using namespace Structures;
+    using namespace DBConvert::Structures;
 
     class FieldTest : public ::testing::Test {
     protected:
-
         void SetUp() {
             value.SetString("TestTitle");
             field = new Field(value.GetString());
