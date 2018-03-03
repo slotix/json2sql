@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(JSON2SQL_CONVERTER DESCRIPTION "JSON to SQL converter by DMSoft. Website: https://dbconvert.com")
+project(JSON2SQL_CONVERTER DESCRIPTION "JSON to SQL converter. Website: https://dbconvert.com")
 set(CMAKE_CXX_STANDARD 11)
 
 enable_testing()

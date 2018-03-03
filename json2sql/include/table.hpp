@@ -14,19 +14,19 @@ namespace DBConvert {
 
         class Table {
         protected:
-            explicit Table(const uint32_t guid, const rapidjson::Value *title, const uint16_t depth, const Table *parent)
+            explicit Table(const uint32_t guid, rapidjson::Value *title, const uint16_t depth, const Table *parent)
                     : title_(title), guid_(guid), depth_(depth), parent_(parent) {};
             const Table * parent_;
             uint32_t      guid_;
             uint16_t      depth_;
-            const rapidjson::Value * title_;
+            rapidjson::Value * title_;
         public:
             virtual ~Table();
             virtual uint32_t      get_guid()       const = 0;
-            virtual const char  * get_title()      const = 0;
             virtual uint16_t      get_depth()      const = 0;
             virtual const Table * get_parent()     const = 0;
             virtual RecordSet   * get_record_set() const = 0;
+            virtual rapidjson::Value * get_title() const = 0;
         };
         inline Table::~Table() {
             title_ = nullptr;

@@ -25,8 +25,8 @@ namespace {
         rapidjson::Value * title;
     };
 
-    TEST_F(EnumTableTest, GetTitleReturnsConstCharPtrToValueGetStringPtr) {
-        EXPECT_EQ(table->get_title(), title->GetString());
+    TEST_F(EnumTableTest, GetTitleReturnsValuePtr) {
+        EXPECT_EQ(table->get_title()->GetString(), title->GetString());
     };
 
     TEST_F(EnumTableTest, GetDepth) {

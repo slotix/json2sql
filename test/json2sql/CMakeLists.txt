@@ -10,7 +10,10 @@ add_executable(json2sql_test
         hash_table.cpp
         enum_table.cpp
         table.cpp
-        hash_record_set.cpp enum_record_set.cpp record_set.cpp)
+        hash_record_set.cpp
+        enum_record_set.cpp
+        record_set.cpp
+        json2sql.cpp)
 target_link_libraries(json2sql_test libgtest json2sql)
 
 add_test(NAME json2sql_test

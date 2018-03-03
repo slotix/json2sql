@@ -26,8 +26,8 @@ namespace {
         Value * title;
     };
 
-    TEST_F(HashTableTest, GetTitleReturnsConstCharPtrToValueGetStringPtr) {
-        EXPECT_EQ(table->get_title(), title->GetString());
+    TEST_F(HashTableTest, GetTitleReturnsValuePtr) {
+        EXPECT_EQ(table->get_title()->GetString(), title->GetString());
     };
 
     TEST_F(HashTableTest, GetDepth) {

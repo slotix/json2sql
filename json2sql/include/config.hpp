@@ -52,7 +52,11 @@ enum ERROR_CODES: uint8_t  {
     HashRecordSet_Add_ValueUndefined = 0x0A,
     EnumRecordSet_AddRecord_ParentTableCurrentIdRecordIsZero = 0x0B,
     HashRecordSet_Add_RecordUndefined = 0x0C,
-    HashRecordSet_Add_TitleNotString = 0x0D
+    HashRecordSet_Add_TitleNotString = 0x0D,
+    Parse_Error = 0xF1,
+    Json2Sql_TextJsonNullPtr = 0xF2,
+    Json2Sql_FileNullPtr = 0xF3
+
 };
 
 #endif //JSON2SQL_CONFIG_HPP

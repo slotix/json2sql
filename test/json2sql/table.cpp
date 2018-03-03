@@ -44,7 +44,7 @@ namespace {
         EnumTable e_table(enum_table_guid, enum_table_title_ptr, enum_table_depth, nullptr);
         HashTable h_table(hash_table_guid, hash_table_title_ptr, hash_table_depth, &e_table);
         EXPECT_EQ(h_table.get_parent(), &e_table);
-        EXPECT_EQ(h_table.get_parent()->get_title(), enum_table_title_ptr->GetString());
+        EXPECT_EQ(h_table.get_parent()->get_title()->GetString(), enum_table_title_ptr->GetString());
         EXPECT_EQ(h_table.get_parent()->get_guid(), enum_table_guid);
         EXPECT_EQ(h_table.get_parent()->get_depth(), enum_table_depth);
     }
@@ -53,7 +53,7 @@ namespace {
         HashTable h_table(hash_table_guid, hash_table_title_ptr, hash_table_depth, nullptr);
         EnumTable e_table(enum_table_guid, enum_table_title_ptr, enum_table_depth, &h_table);
         EXPECT_EQ(e_table.get_parent(), &h_table);
-        EXPECT_EQ(e_table.get_parent()->get_title(), hash_table_title_ptr->GetString());
+        EXPECT_EQ(e_table.get_parent()->get_title()->GetString(), hash_table_title_ptr->GetString());
         EXPECT_EQ(e_table.get_parent()->get_guid(), hash_table_guid);
         EXPECT_EQ(e_table.get_parent()->get_depth(), hash_table_depth);
     }

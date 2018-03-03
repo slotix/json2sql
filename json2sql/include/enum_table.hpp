@@ -16,14 +16,14 @@ namespace DBConvert {
         private:
             EnumRecordSet * enum_record_set_;
         public:
-            explicit EnumTable(const uint32_t &guid, const rapidjson::Value *title, const uint16_t &depth,
-                               const Table *parent) : Table(guid, title, depth, parent), enum_record_set_(new EnumRecordSet(this)) {};
+            explicit EnumTable(const uint32_t &guid, rapidjson::Value *title, const uint16_t &depth, const Table *parent)
+                    : Table(guid, title, depth, parent), enum_record_set_(new EnumRecordSet(this)) {};
             ~EnumTable() final;
             RecordSet   * get_record_set() const override { return enum_record_set_; }
-            const char  * get_title()      const override { return title_->GetString(); }
             uint32_t      get_guid()       const override { return guid_; }
             uint16_t      get_depth()      const override { return depth_; }
             const Table * get_parent()     const override { return parent_; }
+            rapidjson::Value * get_title()      const override { return title_; }
         };
         inline EnumTable::~EnumTable() { delete enum_record_set_; }
     }
