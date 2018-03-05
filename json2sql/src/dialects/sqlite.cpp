@@ -121,6 +121,7 @@ namespace DBConvert {
             void SQLite::raw_sql(std::ostream& output)
             {
                 out_stream_ = &output;
+                if (json_to_sql_->tables_.size() == 0) return;
                 sql_main_table();
                 for(Table * table : json_to_sql_->tables_)
                 {
