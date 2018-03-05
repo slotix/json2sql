@@ -26,4 +26,12 @@ namespace {
         EXPECT_NO_THROW(json2sql_obj->parse());
     }
 
+    TEST_F(Json2SqlTest, OutputSQL) {
+        json2sql_obj->parse();
+        testing::internal::CaptureStdout();
+        std::cout << json2sql_obj;
+        std::string output = testing::internal::GetCapturedStdout();
+        EXPECT_NE(output.length() , 0 );
+    }
+
 }

@@ -10,6 +10,18 @@
 
 namespace DBConvert {
 
+    json2sql::json2sql(const char *text_json, DIALECT dialect)
+            : dialect_(dialect), text_json_(text_json), file_json_(nullptr), guid_(0)
+    {
+        if (text_json == nullptr) throw Json2Sql_TextJsonNullPtr;
+    }
+
+    json2sql::json2sql(FILE *file, DIALECT dialect)
+            : dialect_(dialect), text_json_(nullptr), file_json_(file), guid_(0)
+    {
+        if (file == nullptr) throw Json2Sql_FileNullPtr;
+    };
+
     json2sql::~json2sql() {
         for (auto it = tables_.rbegin(); it != tables_.rend(); ++it)
         {
@@ -37,6 +49,19 @@ namespace DBConvert {
                 enum_entry(document_json_, nullptr, 0, nullptr);
                 break;
         }
+    }
+
+    std::ostream & operator << (std::ostream & stream, json2sql & json_to_sql) {
+        DBConvert::Structures::Dialect::SQLDialect * sql_dialect;
+        switch(json_to_sql.dialect_)
+        {
+            case DIALECT::SQLite :
+                sql_dialect = new DBConvert::Structures::Dialect::SQLite{ &json_to_sql };
+                break;
+        }
+        sql_dialect->raw_sql(stream);
+        delete sql_dialect;
+        return stream;
     }
 
     void json2sql::hash_entry(rapidjson::Value &entry, rapidjson::Value *title, uint16_t depth, Structures::Table *parent) {

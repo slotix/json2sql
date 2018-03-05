@@ -27,8 +27,6 @@ namespace MAIN_TABLE {
 
 enum class DIALECT : uint8_t {
     SQLite = 1
-    //,
-    //MySQL = 2
 };
 
 enum FIELD_TYPE: uint8_t {
@@ -56,7 +54,6 @@ enum ERROR_CODES: uint8_t  {
     Parse_Error = 0xF1,
     Json2Sql_TextJsonNullPtr = 0xF2,
     Json2Sql_FileNullPtr = 0xF3
-
 };
 
 #endif //JSON2SQL_CONFIG_HPP
