@@ -14,7 +14,6 @@ namespace DBConvert {
         class EnumRecordSet : public RecordSet {
         private:
             rapidjson::Value * null_value; // temporary NullValue for add_null_record
-            std::vector<rapidjson::Value*> * empty_values_;
             Table * owner_table_ = nullptr;
             Field * enum_field_ = nullptr;  // ENUM field
         public:

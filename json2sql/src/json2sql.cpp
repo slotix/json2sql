@@ -48,6 +48,8 @@ namespace DBConvert {
             case rapidjson::kArrayType:
                 enum_entry(document_json_, nullptr, 0, nullptr);
                 break;
+            default:
+                throw ERROR_CODES::Parse_Error;
         }
     }
 

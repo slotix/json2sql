@@ -89,6 +89,7 @@ namespace DBConvert {
                                  << " (" << vector_to_string(fields) << ") VALUES (" << vector_to_string(values) << ");" << std::endl;
                 }
                 *out_stream_ << std::endl;
+                out_stream_->flush();
             }
 
             std::string SQLite::vector_to_string(std::vector<std::string> &vec)
